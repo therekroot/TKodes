@@ -1,0 +1,19 @@
+/* This is a CSS comment.*/
+.title {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+}
+.description {
+  color: blue;
+  font-style:
+}
+
+p {
+
+}
+
+/*
+Comments are only to help PEOPLE read a code file. The
+computer ignores them.
+*/
