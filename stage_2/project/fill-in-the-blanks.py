@@ -39,15 +39,20 @@ def word_missing(word, blanks):
         print("\n Try Again. You have " + str(3 - attempts) + " more attempt(s) \n")
     return word
 
+def check_word(word, blanks): #function to check if word-part is in blanks
+    for e in blanks:
+        if e in word:
+            return True
+    return False
+
 def fill_in_the_blanks(text, blanks):
     text_list = text.split()
     for e in text_list:
-        if e in text_list: #is e in updated text_list
-            if e in blanks:
-                print(text)
-                next_word = word_missing(e,blanks)
-                text = text.replace(e,next_word) #replace ALL occurrences
-                text_list = text.split()
+        if e in text_list and check_word(e, blanks): #is e in updated text_list
+            print(text)
+            next_word = word_missing(e,blanks)
+            text = text.replace(e,next_word) #replace ALL occurrences
+            text_list = text.split()
     print(text)
     print("\n \n ************* \n Congratulations, you won! \n *************")
     return text
@@ -67,31 +72,3 @@ fill_in_the_blanks(sample,blanks)
 # How can you adapt that design to work with numbered blanks?
 
 # If you need help, you can sign up for a 1 on 1 coaching appointment: https://calendly.com/ipnd1-1/20min/
-
-
-
-
-
-
-
-
-# parts_of_speech  = ["PLACE", "PERSON", "PLURALNOUN", "NOUN"]
-#
-# test_string = """This is PLACE, no NOUN named PERSON, We have so many PLURALNOUN around here."""
-#
-# def word_in_pos(word, parts_of_speech):
-#     for pos in parts_of_speech:
-#         if pos in word:
-#             return word.split(pos)[0] + "corgi" + word.split(pos)[1]
-#     return word
-#
-#
-# def play_game(ml_string, parts_of_speech):
-#     replaced = []
-#     # your code here
-#     string_list = ml_string.split()
-#     for e in string_list:
-#         replaced.append(word_in_pos(e,parts_of_speech))
-#     return " ".join(replaced)
-#
-# print play_game(test_string, parts_of_speech)
