@@ -22,6 +22,39 @@ don't specify the value to return. ___2___ can be standard data types such as st
 tuple, and ___4___ or can be more complicated such as objects and lambda functions.'''
 
 # The answer for ___1___ is 'function'. Can you figure out the others?
+blanks = ['___1___','___2___','___3___','___4___']
+answers = ['function','arguments','none','boolean']
+
+def word_missing(word, blanks):
+    attempts = 0
+    while attempts < 3: #attempts loop
+        user_input = raw_input("Enter word for " + word + ": ") #require input
+        if user_input == answers[blanks.index(word)]: #validate input is correct
+            print("\n Correct! \n")
+            return user_input
+        attempts += 1
+        if attempts == 3: #if incorrect
+            print("\n \n \n Game over. Please play again.")
+            exit() #user loses the game, exit script
+        print("\n Try Again. You have " + str(3 - attempts) + " more attempt(s) \n")
+    return word
+
+def fill_in_the_blanks(text, blanks):
+    text_list = text.split()
+    for e in text_list:
+        if e in text_list: #is e in updated text_list
+            if e in blanks:
+                print(text)
+                next_word = word_missing(e,blanks)
+                text = text.replace(e,next_word) #replace ALL occurrences
+                text_list = text.split()
+    print(text)
+    print("\n \n ************* \n Congratulations, you won! \n *************")
+    return text
+
+
+fill_in_the_blanks(sample,blanks)
+
 
 # We've also given you a file called fill-in-the-blanks.pyc which is a working version of the project.
 # A .pyc file is a Python file that has been translated into "byte code".
@@ -34,3 +67,31 @@ tuple, and ___4___ or can be more complicated such as objects and lambda functio
 # How can you adapt that design to work with numbered blanks?
 
 # If you need help, you can sign up for a 1 on 1 coaching appointment: https://calendly.com/ipnd1-1/20min/
+
+
+
+
+
+
+
+
+# parts_of_speech  = ["PLACE", "PERSON", "PLURALNOUN", "NOUN"]
+#
+# test_string = """This is PLACE, no NOUN named PERSON, We have so many PLURALNOUN around here."""
+#
+# def word_in_pos(word, parts_of_speech):
+#     for pos in parts_of_speech:
+#         if pos in word:
+#             return word.split(pos)[0] + "corgi" + word.split(pos)[1]
+#     return word
+#
+#
+# def play_game(ml_string, parts_of_speech):
+#     replaced = []
+#     # your code here
+#     string_list = ml_string.split()
+#     for e in string_list:
+#         replaced.append(word_in_pos(e,parts_of_speech))
+#     return " ".join(replaced)
+#
+# print play_game(test_string, parts_of_speech)
