@@ -65,7 +65,7 @@ def level_num_guesses():
     return number
 
 def text_difficulty():
-    level = raw_input("Please enter difficulty of the text you must fill: " + levels[0] + ", " + levels[1] + ", or " + levels[2] + ": ")
+    level = raw_input("Please enter difficulty of the text you must fill: " + levels[0] + ", " + levels[1] + ", or " + levels[2] + ": ").lower()
     while level not in levels:
         level = raw_input("Please enter a correct difficulty: " + levels[0] + ", " + levels[1] + ", or " + levels[2] + ": ")
     game_text = samples[levels.index(str(level))]
@@ -79,10 +79,11 @@ def word_missing(word,attempts,level_index):
             print("\n Correct! \n")
             return user_input.lower()
         user_tries += 1
+
         if user_tries == attempts: #if incorrect
             print("\n \n \n Game over. Please play again.")
             exit() #user loses the game, exit script
-        print("\n Try Again. You have " + str(attempts - user_tries) + " more attempt(s) \n")
+        print("\n Try Again. You have " + str(int(attempts) - user_tries) + " more attempt(s) \n")
     return word
 
 def check_word(word,blanks): #function to check if word-part is in blanks
@@ -118,7 +119,7 @@ def play_game():
     print "\n \n Welcome to Fill In The Blanks! Follow the prompts to enter your difficulty settings. \n \n"
     attempts_total = level_num_guesses()
     sample = text_difficulty()
-    fill_in_the_blanks(easy,blanks,attempts_total)
+    fill_in_the_blanks(sample,blanks,attempts_total)
     return attempts_total
 
 
