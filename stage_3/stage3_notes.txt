@@ -1,0 +1,6 @@
+Primary learnings:
+-Lessons 0 & 1: Familiar: functions
+-Lessons 2 & 3: New: classes & object oriented programming
+
+"Take a Break"
+-after 2 hours, opens browser to take a break
